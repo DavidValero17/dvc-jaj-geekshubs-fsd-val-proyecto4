@@ -22,10 +22,22 @@ module.exports = {
         type: Sequelize.STRING
       },
       doctor_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+
+          model: 'Doctors',
+          key: 'id'
+          
+        }
       },
       client_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+
+          model: 'Clients',
+          key: 'id'
+
+        }
       },
       createdAt: {
         allowNull: false,
