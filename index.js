@@ -1,13 +1,18 @@
 
 const express = require('express');
+const db = require("./db");
+
 const app = express();
 //Importo el método de conexion a la base de datos
-const db = require("./db");
-const { sequelize } = require("./models/index");
+const authRoutes = require('./views/authRoutes');
+
+
 app.use(express.json());
+app.use(authRoutes);
 
 
-const PORT = process.env.PORT || 4000;
+const PORT = 4000;
+
 db.then (() => {
     //Starting server
     app.listen(PORT, () => console.log("Server on port " + PORT));
