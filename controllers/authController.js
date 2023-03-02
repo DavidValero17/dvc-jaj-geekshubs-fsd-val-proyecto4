@@ -19,7 +19,11 @@ authController.register = async (req, res) => {
                 role_id: 2
             }
         )
-        return res.json(newUser);
+        const newClient = await Client.create({
+            user_id: newUser.id
+        })
+            
+        return res.json({newUser,newClient});
     } catch (error) {
         return res.status(500).send(error.message);
     }
