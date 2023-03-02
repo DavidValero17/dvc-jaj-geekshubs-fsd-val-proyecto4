@@ -29,12 +29,9 @@ authController.login = async (req, res) => {
     try {
         const { email, password } = req.body;
         const user = await User.findOne({ where: { email: email } });
-
         if (!user) {
             return res.send("Wrong Credentials U");
         }
-
-        const client = await Client.findOne({ where: {user_id: user.id}})
 
         
         const isMatch = bcrypt.compareSync(password, user.password);

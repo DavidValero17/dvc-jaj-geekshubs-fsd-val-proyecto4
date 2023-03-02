@@ -4,8 +4,7 @@ const { Appointment } = require('../models');
 appointmentController.createAppointment = async (req, res) => {
     try {
         //Recuperar info de la peticion
-        const { date, hour, price, about, doctor_id, client_id } = req.body;
-        
+        const { date, hour, price, about, doctor_id } = req.body;
         const newAppointment = await Appointment.create(
             {
                 date: date,
@@ -13,9 +12,10 @@ appointmentController.createAppointment = async (req, res) => {
                 price: price,
                 about: about,
                 doctor_id: doctor_id,
-                client_id: client_id
+                client_id: req.clientId
             }
         )
+
         return res.json(newAppointment);
     } catch (error) {
         return res.status(500).send(error.message);

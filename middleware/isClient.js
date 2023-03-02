@@ -6,6 +6,7 @@ const isClient = async (req, res, next) => {
       where: { user_id: req.userId },
     });
 
+
     if (!client) {
       return res.status(500).json({
         success: true,
@@ -23,3 +24,6 @@ const isClient = async (req, res, next) => {
     });
   }
 };
+
+
+module.exports = isClient;
