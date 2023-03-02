@@ -22,4 +22,12 @@ appointmentController.createAppointment = async (req, res) => {
     }
 }
 
+appointmentController.deleteAppointment = async (req, res) => {
+    const appointmentId = req.body.id;
+
+    const deleteAppointment = await Appointment.destroy({ where:{ id: appointmentId}})
+
+    return res.json(deleteAppointment);
+}
+
 module.exports = appointmentController;
