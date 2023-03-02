@@ -23,11 +23,23 @@ appointmentController.createAppointment = async (req, res) => {
 }
 
 appointmentController.deleteAppointment = async (req, res) => {
-    const appointmentId = req.body.id;
+    const appointmentId = req.params.id;
 
-    const deleteAppointment = await Appointment.destroy({ where:{ id: appointmentId}})
+    const deleteAppointment = await Appointment.destroy({ where:{ id: appointmentId, client_id:req.clientId}})
 
     return res.json(deleteAppointment);
 }
 
+appointmentController.updateAppointment = async (req, res) => {
+    const appointmentId = req.params.id;
+
+    const date = req.body.date;
+    const hour = req.body.hour;
+    const price = req.body.price;
+    const about = req.body.about;
+
+    const updateAppointment = await Appointment.update({date : date, hour:hour,price:price,about:about},{ where:{ id: appointmentId, client_id:req.clientId}})
+
+    return res.json(updateAppointment);
+}
 module.exports = appointmentController;

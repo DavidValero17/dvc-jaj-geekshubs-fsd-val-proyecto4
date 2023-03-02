@@ -10,7 +10,7 @@ const isClient = async (req, res, next) => {
     if (!client) {
       return res.status(500).json({
         success: true,
-        message: "You are not client",
+        message: "You don't have permissions.",
       });
     }
 
