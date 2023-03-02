@@ -42,4 +42,7 @@ appointmentController.updateAppointment = async (req, res) => {
 
     return res.json(updateAppointment);
 }
+
+
+
 module.exports = appointmentController;

@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { User, Appointment } = require("../models");
 
 const userController = {};
 
@@ -23,6 +23,13 @@ userController.updateProfile = async (req, res) => {
     const updateProfile = await User.update({name : name, surname:surname,phone:phone,email:email},{ where:{ id: userId}})
 
     return res.json(updateProfile);
+}
+
+userController.getAppointmentsByUser = async(req, res) => {
+    const appointments = await Appointment.findAll({ where:{ client_id : req.clientId }});
+
+
+    return res.json(appointments)
 }
 
 
