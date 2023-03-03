@@ -10,7 +10,10 @@ module.exports = {
       {id: 3 , name: "Alyna", surname:"Nastas" ,phone:"666555444",email:"alyna@alyna.com",password:bcrypt.hashSync("user", 10),role_id:2,createdAt:"2023-12-12 00:00:00",updatedAt:"2023-12-12 00:00:00"},
       {id: 4 , name: "Ignacio", surname:"Furio Criado" ,phone:"666555444",email:"ignacio@ignacio.com",password:bcrypt.hashSync("user", 10),role_id:2,createdAt:"2023-12-12 00:00:00",updatedAt:"2023-12-12 00:00:00"},
       {id: 5 , name: "Mario", surname:"Aguilar Criado" ,phone:"666555444",email:"mario@mario.com",password:bcrypt.hashSync("user", 10),role_id:2,createdAt:"2023-12-12 00:00:00",updatedAt:"2023-12-12 00:00:00"},
-        ], 
+      {id: 6 , name: "Pepe", surname:"Romero Criado" ,phone:"666555444",email:"pepe@pepe.com",password:bcrypt.hashSync("user", 10),role_id:2,createdAt:"2023-12-12 00:00:00",updatedAt:"2023-12-12 00:00:00"},
+      {id: 7 , name: "Agustin", surname:"Del Valle Criado" ,phone:"666555444",email:"agustin@agustin.com",password:bcrypt.hashSync("user", 10),role_id:2,createdAt:"2023-12-12 00:00:00",updatedAt:"2023-12-12 00:00:00"},
+
+    ], 
     {});
   },
 

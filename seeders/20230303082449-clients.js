@@ -6,8 +6,8 @@ module.exports = {
 
       await queryInterface.bulkInsert('Clients',[
         {id: 1 , user_id: 3},
-        {id: 2 , user_id: 4},
-        {id: 3 , user_id: 5},
+        {id: 2 , user_id: 6},
+        {id: 3 , user_id: 7},
       ], 
       {});
   },

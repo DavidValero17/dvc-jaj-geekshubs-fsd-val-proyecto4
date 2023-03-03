@@ -13,6 +13,8 @@ const isClient = async (req, res, next) => {
       });
     }
 
+
+
     req.clientId = client.id;
 
     next();
