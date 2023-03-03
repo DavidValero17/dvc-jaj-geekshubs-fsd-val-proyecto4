@@ -6,7 +6,12 @@ userController.getProfile = async (req, res) => {
     const userId = req.userId;
 
 
-    const user = await User.findByPk(userId)
+    const user = await User.findByPk(userId,
+        {
+
+            attributes: { exclude: ["password", "role_id"]}
+        }
+    )
 
     return res.json(user);
 }
@@ -42,7 +47,10 @@ userController.getAllClients = async(req, res) => {
 
     const clients = await Client.findAll(
         {
-            include:User
+            include: {
+                model: User,
+                attributes: { exclude: ["password", "role_id"]}
+            }
         }
     )
 
