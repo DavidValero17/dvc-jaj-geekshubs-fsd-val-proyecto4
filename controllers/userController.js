@@ -32,5 +32,10 @@ userController.getAppointmentsByUser = async(req, res) => {
     return res.json(appointments)
 }
 
+userController.getAllAppointments = async(req, res) => {
+    const appointments = await Appointment.findAll()
+
+    return res.json(appointments)
+}
 
 module.exports = userController;
