@@ -1,4 +1,4 @@
-const { User, Appointment } = require("../models");
+const { User, Appointment, Client } = require("../models");
 
 const userController = {};
 
@@ -37,5 +37,17 @@ userController.getAllAppointments = async(req, res) => {
 
     return res.json(appointments)
 }
+
+userController.getAllClients = async(req, res) => {
+
+    const clients = await Client.findAll(
+        {
+            include:User
+        }
+    )
+
+    return res.json(clients)
+}
+
 
 module.exports = userController;
