@@ -19,15 +19,6 @@ const isClient = async (req, res, next) => {
 
     next();
 
-    // if (req.roleId === 1) {
-    //   next();
-    // }
-
-    // return res.status(500).json({
-    //   success: true,
-    //   message: "You don't have permissions.",
-    // });
-
   } catch (error) {
     return res.status(500).json({
       success: false,
