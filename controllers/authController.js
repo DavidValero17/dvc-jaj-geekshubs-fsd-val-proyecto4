@@ -25,6 +25,7 @@ authController.register = async (req, res) => {
             
         return res.json({newUser,newClient});
     } catch (error) {
+
         return res.status(500).send(error.message);
     }
 }
@@ -32,14 +33,16 @@ authController.register = async (req, res) => {
 authController.login = async (req, res) => {
     try {
         const { email, password } = req.body;
+        
         const user = await User.findOne({ where: { email: email } });
         if (!user) {
+
             return res.send("Wrong Credentials U");
         }
 
-        
         const isMatch = bcrypt.compareSync(password, user.password);
         if (!isMatch) {
+
             return res.send("Wrong Credentials P");
         }
 
@@ -52,12 +55,12 @@ authController.login = async (req, res) => {
             },
             'secreto'
         );
+
         return res.json(token);
     } catch (error) {
+
         return res.status(500).send(error.message);
     }
 }
-
-
 
 module.exports = authController;

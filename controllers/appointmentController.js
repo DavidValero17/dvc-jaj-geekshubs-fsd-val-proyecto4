@@ -18,6 +18,7 @@ appointmentController.createAppointment = async (req, res) => {
 
         return res.json(newAppointment);
     } catch (error) {
+        
         return res.status(500).send(error.message);
     }
 }
