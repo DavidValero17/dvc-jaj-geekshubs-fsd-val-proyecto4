@@ -9,7 +9,7 @@ userController.getProfile = async (req, res) => {
     const user = await User.findByPk(userId,
         {
 
-            attributes: { exclude: ["password", "role_id"]}
+            attributes: { exclude: ["password", "role_id"] }
         }
     )
 
@@ -25,31 +25,31 @@ userController.updateProfile = async (req, res) => {
     const phone = req.body.phone;
     const email = req.body.email;
 
-    const updateProfile = await User.update({name : name, surname:surname,phone:phone,email:email},{ where:{ id: userId}})
+    const updateProfile = await User.update({ name: name, surname: surname, phone: phone, email: email }, { where: { id: userId } })
 
     return res.json(updateProfile);
 }
 
-userController.getAppointmentsByUser = async(req, res) => {
-    const appointments = await Appointment.findAll({ where:{ client_id : req.clientId }});
+userController.getAppointmentsByUser = async (req, res) => {
+    const appointments = await Appointment.findAll({ where: { client_id: req.clientId } });
 
 
     return res.json(appointments)
 }
 
-userController.getAllAppointments = async(req, res) => {
+userController.getAllAppointments = async (req, res) => {
     const appointments = await Appointment.findAll()
 
     return res.json(appointments)
 }
 
-userController.getAllClients = async(req, res) => {
+userController.getAllClients = async (req, res) => {
 
     const clients = await Client.findAll(
         {
             include: {
                 model: User,
-                attributes: { exclude: ["password", "role_id"]}
+                attributes: { exclude: ["password", "role_id"] }
             }
         }
     )

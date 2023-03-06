@@ -26,7 +26,7 @@ appointmentController.createAppointment = async (req, res) => {
 appointmentController.deleteAppointment = async (req, res) => {
     const appointmentId = req.params.id;
 
-    const deleteAppointment = await Appointment.destroy({ where:{ id: appointmentId, client_id:req.clientId}})
+    const deleteAppointment = await Appointment.destroy({ where: { id: appointmentId, client_id: req.clientId } })
 
     return res.json(deleteAppointment);
 }
@@ -39,7 +39,7 @@ appointmentController.updateAppointment = async (req, res) => {
     const price = req.body.price;
     const about = req.body.about;
 
-    const updateAppointment = await Appointment.update({date : date, hour:hour,price:price,about:about},{ where:{ id: appointmentId, client_id:req.clientId}})
+    const updateAppointment = await Appointment.update({ date: date, hour: hour, price: price, about: about }, { where: { id: appointmentId, client_id: req.clientId } })
 
     return res.json(updateAppointment);
 }

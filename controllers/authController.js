@@ -7,7 +7,12 @@ authController.register = async (req, res) => {
     try {
         const { name, surname, phone, email, password } = req.body;
         const encryptedPassword = bcrypt.hashSync(password, 10);
-        
+        if (name === undefined || email === undefined|| password === undefined) {
+            return res.json({
+                success: false,
+                message: "You must fill all the fields"
+            })
+        }
         const newUser = await User.create(
             {
                 name: name,
@@ -21,8 +26,8 @@ authController.register = async (req, res) => {
         const newClient = await Client.create({
             user_id: newUser.id
         })
-            
-        return res.json({newUser,newClient});
+
+        return res.json({ newUser, newClient });
     } catch (error) {
 
         return res.status(500).send(error.message);
@@ -38,6 +43,8 @@ authController.login = async (req, res) => {
 
             return res.send("Wrong Credentials U");
         }
+
+
 
         const isMatch = bcrypt.compareSync(password, user.password);
         if (!isMatch) {

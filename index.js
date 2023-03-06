@@ -17,7 +17,7 @@ app.use(appointmentRoutes);
 
 const PORT = 4000;
 
-db.then (() => {
+db.then(() => {
     //Starting server
     app.listen(PORT, () => console.log("Server on port " + PORT));
 })
