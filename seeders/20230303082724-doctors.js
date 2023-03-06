@@ -4,14 +4,14 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
 
-    await queryInterface.bulkInsert('Doctors',[
-      {id: 1 , speciality:"Ortodoncia", user_id: 4},
-      {id: 2 , speciality:"Empastes", user_id: 5}
-    ], 
-    {});
+    await queryInterface.bulkInsert('Doctors', [
+      { id: 1, speciality: "Ortodoncia", user_id: 4 },
+      { id: 2, speciality: "Empastes", user_id: 5 }
+    ],
+      {});
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
      *
