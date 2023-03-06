@@ -152,7 +152,7 @@ Tecnologías utilizadas:
                 "doctor_id": 1
             }
         ```      
-    - NEW APPOINTMENT
+    - DELETE APPOINTMENT
 
             DELETE localhost:4000/appointment/4
 
@@ -164,8 +164,8 @@ Tecnologías utilizadas:
            
            GET localhost:4000/appointments/checkall/doctor
 
-- APPOINTMENTS
-    - NEW APPOINTMENT
+- CLIENTS
+    - CHECK ALL CLIENTS
 
             GET localhost:4000/profile/checkallclients
 
