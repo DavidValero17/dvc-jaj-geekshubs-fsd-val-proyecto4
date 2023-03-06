@@ -88,8 +88,8 @@ Tecnologías utilizadas:
 1. Clonar el repositorio
 2. ` $ npm install `
 3. Conectamos nuestro repositorio con la base de datos 
-4. ``` $ Ejecutamos las migraciones ``` 
-5. ``` $ Ejecutamos los seeders ``` 
+4. ``` $ Ejecutamos las migraciones: npx sequelieze-cli db:migrate ``` 
+5. ``` $ Ejecutamos los seeders: npx sequelize-cli db:seed:all ``` 
 6. ``` $ npm run dev ``` 
 
 ---
