@@ -165,7 +165,7 @@ Tecnologías utilizadas:
            GET localhost:4000/appointments/checkall/doctor
 
 - CLIENTS
-    - CHECK ALL CLIENTS
+    - CHECK ALL CLIENTS AS ADMIN
 
             GET localhost:4000/profile/checkallclients
 
