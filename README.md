@@ -160,7 +160,7 @@ Tecnologías utilizadas:
 
             PUT localhost:4000/appointment/5
 
-    - CHECK ALL APPOINTMENTS 
+    - CHECK ALL APPOINTMENTS AS DOCTOR
            
            GET localhost:4000/appointments/checkall/doctor
 
