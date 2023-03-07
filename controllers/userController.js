@@ -3,58 +3,71 @@ const { User, Appointment, Client } = require("../models");
 const userController = {};
 
 userController.getProfile = async (req, res) => {
-    const userId = req.userId;
-
-
-    const user = await User.findByPk(userId,
-        {
-
-            attributes: { exclude: ["password", "role_id"] }
-        }
-    )
-
-    return res.json(user);
+    try {
+        const userId = req.userId;
+        const user = await User.findByPk(userId,
+            {
+                attributes: { exclude: ["password", "role_id"] }
+            }
+        )
+        return res.json(user);
+    } catch (error) {
+        return res.status(500).send(error.message);
+    }
 }
 
 userController.updateProfile = async (req, res) => {
+    try {
+        const userId = req.userId;
+        const name = req.body.name;
+        const surname = req.body.surname;
+        const phone = req.body.phone;
+        const email = req.body.email;
+        const updateProfile = await User.update({ name: name, surname: surname, phone: phone, email: email }, { where: { id: userId } })
 
-    const userId = req.userId;
+        return res.json(updateProfile);
 
-    const name = req.body.name;
-    const surname = req.body.surname;
-    const phone = req.body.phone;
-    const email = req.body.email;
+    } catch (error) {
+        return res.status(500).send(error.message);
 
-    const updateProfile = await User.update({ name: name, surname: surname, phone: phone, email: email }, { where: { id: userId } })
-
-    return res.json(updateProfile);
+    }
 }
 
 userController.getAppointmentsByUser = async (req, res) => {
-    const appointments = await Appointment.findAll({ where: { client_id: req.clientId } });
+    try {
+        const appointments = await Appointment.findAll({ where: { client_id: req.clientId } });
+        return res.json(appointments)
+    } catch (error) {
+        return res.status(500).send(error.message);
 
-
-    return res.json(appointments)
+    }
 }
 
 userController.getAllAppointments = async (req, res) => {
-    const appointments = await Appointment.findAll()
+    try {
+        const appointments = await Appointment.findAll()
+        return res.json(appointments)
+    } catch (error) {
+        return res.status(500).send(error.message);
 
-    return res.json(appointments)
+    }
 }
 
 userController.getAllClients = async (req, res) => {
-
-    const clients = await Client.findAll(
-        {
-            include: {
-                model: User,
-                attributes: { exclude: ["password", "role_id"] }
+    try {
+        const clients = await Client.findAll(
+            {
+                include: {
+                    model: User,
+                    attributes: { exclude: ["password", "role_id"] }
+                }
             }
-        }
-    )
+        )
+        return res.json(clients)
+    } catch (error) {
+        return res.status(500).send(error.message);
 
-    return res.json(clients)
+    }
 }
 
 
