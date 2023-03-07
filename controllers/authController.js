@@ -5,9 +5,7 @@ const jwt = require('jsonwebtoken');
 
 authController.register = async (req, res) => {
     try {
-        //Recuperar info de la peticion
         const { name, surname, phone, email, password } = req.body;
-        //Tratar esa informacion (encriptada con bcrypt)
         const encryptedPassword = bcrypt.hashSync(password, 10);
         if (name === undefined || email === undefined|| password === undefined) {
             return res.json({
@@ -39,7 +37,7 @@ authController.register = async (req, res) => {
 authController.login = async (req, res) => {
     try {
         const { email, password } = req.body;
-        
+
         const user = await User.findOne({ where: { email: email } });
         if (!user) {
 
