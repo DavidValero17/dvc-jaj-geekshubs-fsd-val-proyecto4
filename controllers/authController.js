@@ -27,10 +27,21 @@ authController.register = async (req, res) => {
             user_id: newUser.id
         })
 
-        return res.json({ newUser, newClient });
+        return res.json(
+            {
+                success: true,
+                message: "User created succesfully",
+                data: { newUser, newClient }
+            });
     } catch (error) {
 
-        return res.status(500).send(error.message);
+        return res.status(500).json(
+            {
+                success: false,
+                message: "something went wrong",
+                error: error.message
+            }
+        );
     }
 }
 
@@ -41,7 +52,7 @@ authController.login = async (req, res) => {
         const user = await User.findOne({ where: { email: email } });
         if (!user) {
 
-            return res.send("Wrong Credentials U");
+            return res.send("Wrong Credentials");
         }
 
 
@@ -49,7 +60,7 @@ authController.login = async (req, res) => {
         const isMatch = bcrypt.compareSync(password, user.password);
         if (!isMatch) {
 
-            return res.send("Wrong Credentials P");
+            return res.send("Wrong Credentials");
         }
 
         //Token propio para autenticar el usuario
@@ -62,10 +73,22 @@ authController.login = async (req, res) => {
             'secreto'
         );
 
-        return res.json(token);
+        return res.json(
+            {
+                success: true,
+                message: "Token created",
+                data: token
+            }
+        );
     } catch (error) {
 
-        return res.status(500).send(error.message);
+        return res.status(500).json(
+            {
+                success: false,
+                message: "something went wrong",
+                error: error.message
+            }
+        );
     }
 }
 
