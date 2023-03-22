@@ -13,7 +13,6 @@ let corsOptions = {//CONFIGURO OPCIONES DE CORS
 };
 
 app.use(cors());
-
 app.use(express.json());
 app.use(router);
 

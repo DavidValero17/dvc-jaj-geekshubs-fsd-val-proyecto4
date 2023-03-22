@@ -67,12 +67,14 @@ authController.login = async (req, res) => {
         const token = jwt.sign(
             {
                 userId: user.id,
+                name: user.name,
+                surname: user.surname,
+                phone: user.phone,
                 email: user.email,
                 roleId: user.role_id
             },
             'secreto'
         );
-
         return res.json(
             {
                 success: true,
