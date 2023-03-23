@@ -11,4 +11,4 @@ router.put('/appointment/:id', verifyToken, isClient, appointmentController.upda
 
 
 
-module.exports = router;
+module.exports = router; 

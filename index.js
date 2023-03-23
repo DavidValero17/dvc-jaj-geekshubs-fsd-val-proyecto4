@@ -1,10 +1,19 @@
-
+const cors = require('cors');
 const express = require('express');
 const cors = require("cors");
 const db = require("./db");
-const router = require("./router");
 const app = express();
+const router = require('./router');
+//Importo el método de conexion a la base de datos
 
+let corsOptions = {//CONFIGURO OPCIONES DE CORS
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 204
+};
+
+app.use(cors());
 let corsOptions = {
     origin: "*",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
